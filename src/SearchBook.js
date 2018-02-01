@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Book from './Book'
 
 class SearchBook extends React.Component {
-		static propTypes = {
+	static propTypes = {
 		results: PropTypes.array.isRequired,
 		onLookUp: PropTypes.func.isRequired
 	}
@@ -48,7 +48,7 @@ class SearchBook extends React.Component {
 						<div className="search-books-results">
 							<ol className="books-grid">
 								{this.props.value.list.map((bookData,index) => (
-									<li key={index}>
+									<li key={bookData.id}>
 										<Book
 											book={this.checkData(bookData)}
 											updateBook={this.props.updateBook}/>

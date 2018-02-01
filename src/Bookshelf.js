@@ -16,7 +16,7 @@ class Bookshelf extends React.Component {
           <ol className="books-grid">
       		{this.props.books.filter(book => book.shelf === this.props.shelf)
              .map((bookData,index) => (
-              <li key={index}>
+              <li key={bookData.id}>
                   <Book
       				  book={bookData}
              		  updateBook={this.props.updateBook}/>

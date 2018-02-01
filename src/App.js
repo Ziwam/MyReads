@@ -7,13 +7,16 @@ import {Link} from 'react-router-dom'
 import './App.css'
 
 class BooksApp extends React.Component {
+	constructor(props) {
+		super(props);
+		this.shelves = [
+				{name:"Currently Reading", shelf:"currentlyReading"},
+				{name:"Read", shelf:"read"},
+				{name:"Want To Read", shelf:"wantToRead"}];
+	}
+
 	state = {
 		books: [],
-		shelves: [
-			{name:"Currently Readying", shelf:"currentlyReading"},
-				{name:"Read", shelf:"read"},
-		{name:"Want To Read", shelf:"wantToRead"}
-		],
 		results: []
 	}
 
@@ -33,14 +36,18 @@ class BooksApp extends React.Component {
 	}
 	
 	lookUp = (query,max) => {
-		BooksAPI.search(query,max).then((books) => {
-				if(!books){
-					if(this.state.results.length>0)
-					this.setState({results: []})
-				}else{
-					this.setState({results: books})
-				}
-		})
+		if(query){
+			BooksAPI.search(query,max).then((books) => {
+					if(!books){
+						if(this.state.results.length>0)
+						this.setState({results: []})
+					}else{
+						this.setState({results: books})
+					}
+			})
+		} else {
+			this.setState({results: []})
+		}
 	}
 
 	render() {
@@ -60,7 +67,7 @@ class BooksApp extends React.Component {
 						</div>
 						<div className="list-books-content">
 							<div>
-								{this.state.shelves.map((shelf,index) =>
+								{this.shelves.map((shelf,index) =>
 									<Bookshelf
 														key={index}
 														updateBook={this.updateBook}

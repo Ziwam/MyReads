@@ -39,14 +39,13 @@ class Book extends React.Component {
      }
 }
 
-
 	Book.defaultProps = {
-    	values: {
-          url: '',
-          title: '',
-          authors: [],
-          id:'',
-          shelf:''}
-    };
+  	values: {
+        url: 'http://via.placeholder.com/128x193?text=No%20Cover',
+        title: '',
+        authors: [],
+        id:'',
+        shelf:''}
+  };
 
 export default Book;
