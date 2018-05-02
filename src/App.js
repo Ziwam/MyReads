@@ -4,15 +4,15 @@ import Bookshelf from './Bookshelf'
 import SearchBook from './SearchBook'
 import {Route} from 'react-router-dom'
 import {Link} from 'react-router-dom'
-import './App.css'
 
 class BooksApp extends React.Component {
 	constructor(props) {
 		super(props);
 		this.shelves = [
-				{name:"Currently Reading", shelf:"currentlyReading"},
-				{name:"Read", shelf:"read"},
-				{name:"Want To Read", shelf:"wantToRead"}];
+			{name:"Currently Reading", shelf:"currentlyReading"},
+			{name:"Read", shelf:"read"},
+			{name:"Want To Read", shelf:"wantToRead"}
+		];
 	}
 
 	state = {
@@ -28,11 +28,14 @@ class BooksApp extends React.Component {
 
 	updateBook = (id,shelf) => {
 		BooksAPI.update(id,shelf).then(
-			BooksAPI.getAll().then((books) => {
-				console.log(books)
+			BooksAPI.get(id).then((book) => {
+				var books = this.state.books.filter(obj => obj.id !== book.id);
+				books.push(book);
 				this.setState({books})
 			})
-		)
+		).catch((err)=>{
+			console.log(err)
+		})
 	}
 	
 	lookUp = (query,max) => {
@@ -62,10 +65,10 @@ class BooksApp extends React.Component {
 			)}/>	
 			 <Route exact path="/" render={() => (
 					<div className="list-books">
-						<div className="list-books-title">
+						<div className="header">
 							<h1>MyReads</h1>
 						</div>
-						<div className="list-books-content">
+						<div className="content">
 							<div>
 								{this.shelves.map((shelf,index) =>
 									<Bookshelf
@@ -87,4 +90,4 @@ class BooksApp extends React.Component {
 	}
 }
 
-export default BooksApp
+export default BooksApp;
