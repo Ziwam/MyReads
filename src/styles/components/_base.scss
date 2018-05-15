@@ -1,0 +1,29 @@
+@import '../helpers/variables.scss';
+
+@font-face {
+  font-family: "Euphemia";
+  src: url("../assets/Euphemia.ttf");
+}
+
+@font-face {
+  font-family: "AlegreyaSC";
+  src: url("../assets/AlegreyaSC-Regular.otf");
+}
+
+html, body, .root {
+  height: 100%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-body, sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+}

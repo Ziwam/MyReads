@@ -11,7 +11,11 @@ class Bookshelf extends React.Component {
   render() {
     return (
       <div className="bookshelf">
-        <h2 className="self">{this.props.name}</h2>
+        <h2 className="self">{this.props.name}
+          <div className="border1">
+            <div className="border2"></div>
+          </div>
+        </h2>
         <div className="books">
           <ol className="grid">
         		{this.props.books.filter(book => book.shelf === this.props.shelf)

@@ -1,12 +1,26 @@
-@import './main.scss';
-@import './search.scss';
+@import '../helpers/variables.scss';
 
-html, body, .root {
-  height: 100%;
-}
-body {
-  line-height: 1.5;
-}
-body, .app {
-  background: white;
+.app{
+	margin-bottom: 60px;
+	
+	.background1{
+		position: fixed;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		background-image: linear-gradient( 170deg,rgba(135, 120, 111,0.6) 2%,rgba(220, 203, 192,0.6) 30%), url("../assets/wood_background.png");
+		background-attachment: scroll;
+		background-size: cover;
+		background-repeat: repeat;
+		background-position: center;
+		opacity: 0.6;
+	}
+
+	.background2{
+		position: fixed;
+		z-index: -2;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(90deg, $black 0%, $grey 40%,$grey 60%,$black 100%);
+	}
 }

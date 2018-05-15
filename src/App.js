@@ -30,12 +30,18 @@ class BooksApp extends React.Component {
 		BooksAPI.update(id,shelf).then(
 			BooksAPI.get(id).then((book) => {
 				var books = this.state.books.filter(obj => obj.id !== book.id);
+				book = this.pushToShelf(shelf,book);
 				books.push(book);
 				this.setState({books})
 			})
 		).catch((err)=>{
 			console.log(err)
 		})
+	}
+
+	pushToShelf = (shelf,book) => {
+		book.shelf = shelf;
+		return book;
 	}
 	
 	lookUp = (query,max) => {
@@ -56,6 +62,8 @@ class BooksApp extends React.Component {
 	render() {
 		return (
 			<div className="app">
+			<div className="background1"></div>
+			<div className="background2"></div>
 			<Route path="/search" render={() => (
 				<SearchBook
 					updateBook={this.updateBook}
