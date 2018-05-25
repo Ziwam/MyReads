@@ -1,4 +1,4 @@
-@import '../helpers/variables.scss';
+@import '../helpers/_mixins.scss';
 
 /* books grid */
 
@@ -54,6 +54,11 @@
     margin-top: 5px;
     color: #E8E8E8;
   }
+
+  @include animation(
+    'fade-in .5s .3s ease-out 1 normal backwards',
+    'slide-in-up .4s .3s ease-out 1 normal backwards'
+  );
 }
 
 .book-cover-title {
